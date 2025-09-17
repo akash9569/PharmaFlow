@@ -3,6 +3,7 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import { CartProvider } from '@/context/cart-context';
+import { AuthProvider } from '@/context/auth-context';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Statistics } from '@/components/statistics';
@@ -27,17 +28,19 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
       </head>
       <body className={cn('font-body antialiased h-full bg-background')}>
-        <CartProvider>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-grow">{children}</main>
-            <ClientReviews />
-            <Statistics />
-            <Footer />
-          </div>
-          <Chatbot />
-          <Toaster />
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow">{children}</main>
+              <ClientReviews />
+              <Statistics />
+              <Footer />
+            </div>
+            <Chatbot />
+            <Toaster />
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );

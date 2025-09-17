@@ -1,3 +1,6 @@
+
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -5,9 +8,21 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { placeholderImages } from "@/lib/placeholder-images.json";
+import { useAuth } from "@/context/auth-context";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function SignupPage() {
     const loginImage = placeholderImages.find(p => p.id === 'login-hero');
+    const { user, signInWithGoogle } = useAuth();
+    const router = useRouter();
+  
+    useEffect(() => {
+      if (user) {
+        router.push('/');
+      }
+    }, [user, router]);
+
   return (
     <div className="w-full lg:grid lg:min-h-[calc(100vh-8rem)] lg:grid-cols-2 xl:min-h-[calc(100vh-8rem)]">
         <div className="flex items-center justify-center py-12">
@@ -36,10 +51,10 @@ export default function SignupPage() {
                         <Label htmlFor="password">Password</Label>
                         <Input id="password" type="password" required />
                     </div>
-                    <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                    <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled>
                         Create Account
                     </Button>
-                    <Button variant="outline" className="w-full">
+                    <Button variant="outline" className="w-full" onClick={signInWithGoogle} type="button">
                         Sign up with Google
                     </Button>
                 </form>
