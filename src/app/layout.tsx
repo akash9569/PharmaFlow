@@ -7,6 +7,7 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Statistics } from '@/components/statistics';
 import { ClientReviews } from '@/components/client-reviews';
+import { Chatbot } from '@/components/chatbot';
 
 export const metadata: Metadata = {
   title: 'PharmaFlow',
@@ -34,6 +35,7 @@ export default function RootLayout({
             <Statistics />
             <Footer />
           </div>
+          <Chatbot />
           <Toaster />
         </CartProvider>
       </body>
