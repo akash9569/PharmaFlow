@@ -1,3 +1,64 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-background",
+      "description": "A modern, clean pharmacy interior with well-lit shelves.",
+      "imageUrl": "https://picsum.photos/seed/pharma-hero/1920/1080",
+      "imageHint": "pharmacy interior"
+    },
+    {
+      "id": "prod_001",
+      "description": "Box of Ibuprofen tablets.",
+      "imageUrl": "https://picsum.photos/seed/ibuprofen/400/400",
+      "imageHint": "medicine box"
+    },
+    {
+      "id": "prod_002",
+      "description": "Bottle of Vitamin C tablets.",
+      "imageUrl": "https://picsum.photos/seed/vitaminc/400/400",
+      "imageHint": "vitamin bottle"
+    },
+    {
+      "id": "prod_003",
+      "description": "Box of Cold and Flu medicine.",
+      "imageUrl": "https://picsum.photos/seed/coldflu/400/400",
+      "imageHint": "medicine box"
+    },
+    {
+      "id": "prod_004",
+      "description": "Box of Allergy Relief tablets.",
+      "imageUrl": "https://picsum.photos/seed/allergy/400/400",
+      "imageHint": "medicine box"
+    },
+    {
+      "id": "prod_005",
+      "description": "Bottle of Calcium and Vitamin D3 tablets.",
+      "imageUrl": "https://picsum.photos/seed/calcium/400/400",
+      "imageHint": "vitamin bottle"
+    },
+    {
+      "id": "prod_006",
+      "description": "Box of Paracetamol tablets.",
+      "imageUrl": "https://picsum.photos/seed/paracetamol/400/400",
+      "imageHint": "medicine box"
+    },
+    {
+      "id": "prod_007",
+      "description": "Bottle of Probiotic capsules.",
+      "imageUrl": "https://picsum.photos/seed/probiotic/400/400",
+      "imageHint": "vitamin bottle"
+    },
+    {
+      "id": "prod_008",
+      "description": "Bottle of Melatonin tablets.",
+      "imageUrl": "https://picsum.photos/seed/melatonin/400/400",
+      "imageHint": "vitamin bottle"
+    },
+    {
+      "id": "login-hero",
+      "description": "A friendly pharmacist smiling.",
+      "imageUrl": "https://picsum.photos/seed/login-hero/800/600",
+      "imageHint": "friendly pharmacist"
+    }
+  ]
 }
