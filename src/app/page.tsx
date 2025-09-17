@@ -79,7 +79,7 @@ export default function Home() {
                     </CardContent>
                 </div>
                  <div className="hidden md:block">
-                    <Image src="https://picsum.photos/seed/banner/600/400" alt="Pharmacist holding a box of medicine" width={600} height={400} className="object-cover h-full w-full rounded-r-lg" data-ai-hint="pharmacist medicine" />
+                    <Image src="https://picsum.photos/seed/medicines/600/400" alt="Assortment of different medicines and pills" width={600} height={400} className="object-cover h-full w-full rounded-r-lg" data-ai-hint="medicines pills" />
                  </div>
             </div>
           </Card>
