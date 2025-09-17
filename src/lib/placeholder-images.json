@@ -16,25 +16,25 @@
       "id": "prod_002",
       "description": "Bottle of Vitamin C tablets.",
       "imageUrl": "https://picsum.photos/seed/vitaminc/400/400",
-      "imageHint": "vitamin c"
+      "imageHint": "vitamin c bottle"
     },
     {
       "id": "prod_003",
       "description": "Box of Cold and Flu medicine.",
       "imageUrl": "https://picsum.photos/seed/coldflu/400/400",
-      "imageHint": "cold medicine"
+      "imageHint": "cold medicine box"
     },
     {
       "id": "prod_004",
       "description": "Box of Allergy Relief tablets.",
       "imageUrl": "https://picsum.photos/seed/allergy/400/400",
-      "imageHint": "allergy medicine"
+      "imageHint": "allergy medicine box"
     },
     {
       "id": "prod_005",
       "description": "Bottle of Calcium and Vitamin D3 tablets.",
       "imageUrl": "https://picsum.photos/seed/calcium/400/400",
-      "imageHint": "calcium bottle"
+      "imageHint": "calcium supplement bottle"
     },
     {
       "id": "prod_006",
@@ -46,13 +46,13 @@
       "id": "prod_007",
       "description": "Bottle of Probiotic capsules.",
       "imageUrl": "https://picsum.photos/seed/probiotic/400/400",
-      "imageHint": "probiotic bottle"
+      "imageHint": "probiotic supplement bottle"
     },
     {
       "id": "prod_008",
       "description": "Bottle of Melatonin tablets.",
       "imageUrl": "https://picsum.photos/seed/melatonin/400/400",
-      "imageHint": "melatonin bottle"
+      "imageHint": "melatonin supplement bottle"
     },
     {
       "id": "login-hero",
@@ -65,6 +65,24 @@
       "description": "A stylish membership card for a loyalty program.",
       "imageUrl": "https://picsum.photos/seed/membership/800/500",
       "imageHint": "loyalty card"
+    },
+    {
+      "id": "avatar-1",
+      "description": "Avatar of a smiling woman.",
+      "imageUrl": "https://picsum.photos/seed/avatar1/100/100",
+      "imageHint": "woman smiling"
+    },
+    {
+      "id": "avatar-2",
+      "description": "Avatar of a smiling man.",
+      "imageUrl": "https://picsum.photos/seed/avatar2/100/100",
+      "imageHint": "man smiling"
+    },
+    {
+      "id": "avatar-3",
+      "description": "Avatar of a person.",
+      "imageUrl": "https://picsum.photos/seed/avatar3/100/100",
+      "imageHint": "person smiling"
     }
   ]
 }

@@ -6,6 +6,7 @@ import { CartProvider } from '@/context/cart-context';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Statistics } from '@/components/statistics';
+import { ClientReviews } from '@/components/client-reviews';
 
 export const metadata: Metadata = {
   title: 'PharmaFlow',
@@ -29,6 +30,7 @@ export default function RootLayout({
           <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-grow">{children}</main>
+            <ClientReviews />
             <Statistics />
             <Footer />
           </div>
