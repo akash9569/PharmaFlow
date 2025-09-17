@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://placehold.co/1200x300/25a6a6/ffffff?text=PharmaFlow" alt="PharmaFlow Banner">
+</div>
+
 # PharmaFlow - Online Pharmacy
 
 Welcome to PharmaFlow, your trusted online pharmacy for all your health needs. This application is a modern, full-stack web app built with Next.js, Firebase, and Google's generative AI.
