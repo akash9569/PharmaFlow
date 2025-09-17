@@ -1,8 +1,15 @@
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 import { placeholderImages } from "@/lib/placeholder-images.json";
-import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const reviews = [
   {
@@ -26,6 +33,20 @@ const reviews = [
     rating: 5,
     placeholderId: "avatar-3",
   },
+  {
+    id: "review-4",
+    name: "Emily R.",
+    review: "The checkout process was so smooth and simple. I received my order the next day! I'll definitely be a returning customer.",
+    rating: 5,
+    placeholderId: "avatar-1",
+  },
+  {
+    id: "review-5",
+    name: "David T.",
+    review: "Great selection of products and competitive prices. The AI dosage recommendation tool gave me peace of mind.",
+    rating: 5,
+    placeholderId: "avatar-2",
+  },
 ];
 
 export function ClientReviews() {
@@ -36,34 +57,48 @@ export function ClientReviews() {
           <h2 className="text-3xl font-headline font-bold">What Our Clients Say</h2>
           <p className="text-muted-foreground">Real stories from satisfied customers.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {reviews.map((review) => {
-            const image = placeholderImages.find(p => p.id === review.placeholderId);
-            return (
-              <Card key={review.id}>
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    {image && (
-                         <Avatar className="h-12 w-12 mr-4">
-                            <AvatarImage src={image.imageUrl} alt={review.name} />
-                            <AvatarFallback>{review.name.substring(0,2)}</AvatarFallback>
-                        </Avatar>
-                    )}
-                    <div>
-                      <h3 className="font-semibold">{review.name}</h3>
-                      <div className="flex text-primary">
-                        {[...Array(review.rating)].map((_, i) => (
-                          <Star key={i} className="h-4 w-4 fill-current" />
-                        ))}
-                      </div>
-                    </div>
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full max-w-xs sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto"
+        >
+          <CarouselContent>
+            {reviews.map((review) => {
+              const image = placeholderImages.find(p => p.id === review.placeholderId);
+              return (
+                <CarouselItem key={review.id} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-4 h-full">
+                    <Card className="h-full">
+                      <CardContent className="p-6 flex flex-col justify-between h-full">
+                        <div className="flex items-center mb-4">
+                          {image && (
+                              <Avatar className="h-12 w-12 mr-4">
+                                  <AvatarImage src={image.imageUrl} alt={review.name} />
+                                  <AvatarFallback>{review.name.substring(0,2)}</AvatarFallback>
+                              </Avatar>
+                          )}
+                          <div>
+                            <h3 className="font-semibold">{review.name}</h3>
+                            <div className="flex text-primary">
+                              {[...Array(review.rating)].map((_, i) => (
+                                <Star key={i} className="h-4 w-4 fill-current" />
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        <p className="text-muted-foreground text-sm">{review.review}</p>
+                      </CardContent>
+                    </Card>
                   </div>
-                  <p className="text-muted-foreground">{review.review}</p>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+                </CarouselItem>
+              );
+            })}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </section>
   );
