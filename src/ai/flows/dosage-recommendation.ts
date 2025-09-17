@@ -26,7 +26,7 @@ const DosageRecommendationOutputSchema = z.object({
     .string()
     .describe(
       'A disclaimer that the dosage recommendation is not a substitute for professional medical advice.'
-    ),
+    ).default('This dosage recommendation is not a substitute for professional medical advice. Consult with a healthcare provider for personalized guidance.'),
 });
 export type DosageRecommendationOutput = z.infer<typeof DosageRecommendationOutputSchema>;
 
@@ -45,12 +45,10 @@ You will take in user symptoms and provide a product recommendation and dosage r
 Symptoms: {{{symptoms}}}
 Product Name (if known): {{{productName}}}
 
-Ensure you include the following disclaimer in your response:
-
-"This dosage recommendation is not a substitute for professional medical advice. Consult with a healthcare provider for personalized guidance."
+Provide a clear product recommendation and a specific dosage recommendation based on the symptoms.
 
 {{#if productName}}
-Given the user specified the product, {{productName}}, focus on providing a dosage recommendation for that product, based on the symptoms provided.
+Given the user specified the product, {{productName}}, focus on providing a dosage recommendation for that product, based on the symptoms provided. If the product is not appropriate for the symptoms, suggest a more suitable alternative.
 {{/if}}`,
 });
 
