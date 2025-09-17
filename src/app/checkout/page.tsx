@@ -88,22 +88,22 @@ export default function CheckoutPage() {
                     <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
                   </div>
                 </div>
-                <p className="font-medium">${(item.product.price * item.quantity).toFixed(2)}</p>
+                <p className="font-medium">Rs {(item.product.price * item.quantity).toFixed(2)}</p>
               </div>
             ))}
             <Separator />
             <div className="flex justify-between">
               <p>Subtotal</p>
-              <p>${cartTotal.toFixed(2)}</p>
+              <p>Rs {cartTotal.toFixed(2)}</p>
             </div>
             <div className="flex justify-between">
               <p>Shipping</p>
-              <p>$5.00</p>
+              <p>Rs 50.00</p>
             </div>
             <Separator />
             <div className="flex justify-between font-bold text-lg">
               <p>Total</p>
-              <p>${(cartTotal + 5.00).toFixed(2)}</p>
+              <p>Rs {(cartTotal + 50.00).toFixed(2)}</p>
             </div>
           </CardContent>
         </Card>

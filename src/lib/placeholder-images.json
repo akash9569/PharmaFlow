@@ -9,49 +9,49 @@
     {
       "id": "prod_001",
       "description": "Box of Ibuprofen tablets.",
-      "imageUrl": "https://picsum.photos/seed/ibuprofen/400/400",
+      "imageUrl": "https://picsum.photos/seed/painkiller/400/400",
       "imageHint": "ibuprofen box"
     },
     {
       "id": "prod_002",
       "description": "Bottle of Vitamin C tablets.",
-      "imageUrl": "https://picsum.photos/seed/vitaminc/400/400",
+      "imageUrl": "https://picsum.photos/seed/vitamins/400/400",
       "imageHint": "vitamin c bottle"
     },
     {
       "id": "prod_003",
       "description": "Box of Cold and Flu medicine.",
-      "imageUrl": "https://picsum.photos/seed/coldflu/400/400",
+      "imageUrl": "https://picsum.photos/seed/flu-medicine/400/400",
       "imageHint": "cold medicine box"
     },
     {
       "id": "prod_004",
       "description": "Box of Allergy Relief tablets.",
-      "imageUrl": "https://picsum.photos/seed/allergy/400/400",
+      "imageUrl": "https://picsum.photos/seed/allergy-pills/400/400",
       "imageHint": "allergy medicine box"
     },
     {
       "id": "prod_005",
       "description": "Bottle of Calcium and Vitamin D3 tablets.",
-      "imageUrl": "https://picsum.photos/seed/calcium/400/400",
+      "imageUrl": "https://picsum.photos/seed/calcium-pills/400/400",
       "imageHint": "calcium supplement bottle"
     },
     {
       "id": "prod_006",
       "description": "Box of Paracetamol tablets.",
-      "imageUrl": "https://picsum.photos/seed/paracetamol/400/400",
+      "imageUrl": "https://picsum.photos/seed/headache-pills/400/400",
       "imageHint": "paracetamol box"
     },
     {
       "id": "prod_007",
       "description": "Bottle of Probiotic capsules.",
-      "imageUrl": "https://picsum.photos/seed/probiotic/400/400",
+      "imageUrl": "https://picsum.photos/seed/probiotics-bottle/400/400",
       "imageHint": "probiotic supplement bottle"
     },
     {
       "id": "prod_008",
       "description": "Bottle of Melatonin tablets.",
-      "imageUrl": "https://picsum.photos/seed/melatonin/400/400",
+      "imageUrl": "https://picsum.photos/seed/sleep-aid/400/400",
       "imageHint": "melatonin supplement bottle"
     },
     {

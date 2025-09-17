@@ -39,7 +39,7 @@ function ProductDetailsClient({ product }: { product: Product }) {
         <div>
             <Badge variant="secondary">{product.category}</Badge>
             <h1 className="text-3xl md:text-4xl font-headline font-bold mt-2">{product.name}</h1>
-            <p className="text-2xl font-semibold text-primary mt-2">${product.price.toFixed(2)}</p>
+            <p className="text-2xl font-semibold text-primary mt-2">Rs {product.price.toFixed(2)}</p>
         </div>
         
         <p className="text-muted-foreground leading-relaxed">{product.description}</p>

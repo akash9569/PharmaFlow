@@ -66,7 +66,7 @@ export default function MembershipPage() {
                 </CardContent>
                 <CardFooter>
                     <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                        <Link href="/signup">Sign Up for $9.99/month</Link>
+                        <Link href="/signup">Sign Up for Rs 999/month</Link>
                     </Button>
                 </CardFooter>
             </Card>

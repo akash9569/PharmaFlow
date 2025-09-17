@@ -39,7 +39,7 @@ export function CartSheet({ open, onOpenChange }: CartSheetProps) {
                     <div className="flex-grow flex flex-col justify-between">
                       <div>
                         <p className="font-medium">{item.product.name}</p>
-                        <p className="text-sm text-muted-foreground">${item.product.price.toFixed(2)}</p>
+                        <p className="text-sm text-muted-foreground">Rs {item.product.price.toFixed(2)}</p>
                       </div>
                       <div className="flex items-center gap-2">
                         <Button variant="outline" size="icon" className="h-6 w-6" onClick={() => updateQuantity(item.product.id, item.quantity - 1)}>
@@ -52,7 +52,7 @@ export function CartSheet({ open, onOpenChange }: CartSheetProps) {
                       </div>
                     </div>
                     <div className="flex flex-col justify-between items-end">
-                       <p className="font-medium">${(item.product.price * item.quantity).toFixed(2)}</p>
+                       <p className="font-medium">Rs {(item.product.price * item.quantity).toFixed(2)}</p>
                        <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-destructive" onClick={() => removeFromCart(item.product.id)}>
                         <Trash2 className="h-4 w-4" />
                        </Button>
@@ -65,7 +65,7 @@ export function CartSheet({ open, onOpenChange }: CartSheetProps) {
               <div className="w-full space-y-4">
                  <div className="flex justify-between font-bold text-lg">
                     <span>Subtotal</span>
-                    <span>${cartTotal.toFixed(2)}</span>
+                    <span>Rs {cartTotal.toFixed(2)}</span>
                   </div>
                   <Button asChild size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" onClick={() => onOpenChange(false)}>
                     <Link href="/checkout">Proceed to Checkout</Link>

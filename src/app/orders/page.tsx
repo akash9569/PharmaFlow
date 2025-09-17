@@ -14,25 +14,25 @@ const mockOrders = [
     id: "ORD-001",
     date: "2023-10-26",
     status: "Delivered",
-    total: 45.98,
+    total: 459.80,
   },
   {
     id: "ORD-002",
     date: "2023-10-28",
     status: "Shipped",
-    total: 12.49,
+    total: 124.90,
   },
   {
     id: "ORD-003",
     date: "2023-11-01",
     status: "Processing",
-    total: 101.50,
+    total: 1015.00,
   },
   {
     id: "ORD-004",
     date: "2023-11-02",
     status: "Delivered",
-    total: 22.78,
+    total: 227.80,
   },
 ];
 
@@ -75,7 +75,7 @@ export default function OrdersPage() {
                   <TableCell>
                     <Badge variant={getStatusBadgeVariant(order.status) as any}>{order.status}</Badge>
                   </TableCell>
-                  <TableCell className="text-right">${order.total.toFixed(2)}</TableCell>
+                  <TableCell className="text-right">Rs {order.total.toFixed(2)}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
