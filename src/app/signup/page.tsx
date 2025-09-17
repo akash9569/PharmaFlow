@@ -45,7 +45,7 @@ export default function SignupPage() {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
       setIsLoading(true);
-      await signUpWithEmailAndPassword(values.email, values.password);
+      await signUpWithEmailAndPassword(values.email, values.password, values.fullName);
       setIsLoading(false);
     }
 

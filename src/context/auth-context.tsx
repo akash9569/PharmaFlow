@@ -2,7 +2,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { onAuthStateChanged, signOut as firebaseSignOut, GoogleAuthProvider, signInWithPopup, User, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { onAuthStateChanged, signOut as firebaseSignOut, GoogleAuthProvider, signInWithPopup, User, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from 'next/navigation';
@@ -11,7 +11,7 @@ interface AuthContextType {
   user: User | null;
   loading: boolean;
   signInWithGoogle: () => Promise<void>;
-  signUpWithEmailAndPassword: (email: string, password: string) => Promise<void>;
+  signUpWithEmailAndPassword: (email: string, password: string, fullName: string) => Promise<void>;
   signInWithEmailAndPassword: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
 }
@@ -45,14 +45,20 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const signUpWithEmailAndPassword = async (email: string, password: string) => {
+  const signUpWithEmailAndPassword = async (email: string, password: string, fullName: string) => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      toast({ title: "Account created successfully!", description: "Please log in with your new credentials." });
-      router.push('/login');
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(userCredential.user, { displayName: fullName });
+      // Manually set user state to trigger UI update
+      setUser({ ...userCredential.user, displayName: fullName });
+      toast({ title: "Account created successfully!", description: "You are now logged in." });
+      router.push('/');
     } catch (error: any) {
       console.error("Error signing up: ", error);
-      toast({ title: "Failed to create account.", description: error.message, variant: "destructive" });
+      const errorMessage = error.code === 'auth/email-already-in-use'
+        ? 'This email address is already in use.'
+        : error.message;
+      toast({ title: "Failed to create account.", description: errorMessage, variant: "destructive" });
     }
   }
 
@@ -63,7 +69,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       router.push('/');
     } catch (error: any) {
       console.error("Error signing in: ", error);
-      toast({ title: "Failed to sign in.", description: error.message, variant: "destructive" });
+       const errorMessage = (error.code === 'auth/invalid-credential' || error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password')
+        ? 'Invalid email or password. Please try again.'
+        : error.message;
+      toast({ title: "Failed to sign in.", description: errorMessage, variant: "destructive" });
     }
   }
 
