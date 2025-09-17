@@ -2,10 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search, Stethoscope } from 'lucide-react';
+import { Search, Stethoscope, Award } from 'lucide-react';
 import { products } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
 import { placeholderImages } from '@/lib/placeholder-images.json';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function Home() {
   const heroImage = placeholderImages.find(p => p.id === 'hero-background');
@@ -56,6 +57,29 @@ export default function Home() {
             <Search className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
           </div>
         </div>
+      </section>
+
+       <section className="container mx-auto px-4">
+          <Card className="bg-accent text-accent-foreground border-none">
+            <div className="grid md:grid-cols-2 items-center">
+                <div className="p-8 md:p-12">
+                    <CardHeader className="p-0 mb-4">
+                        <CardTitle className="text-3xl font-headline flex items-center gap-2"><Award /> Become a PharmaFlow+ Member</CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-0">
+                        <CardDescription className="text-accent-foreground/90 text-base mb-6">
+                            Join our loyalty program to unlock exclusive perks like free shipping, special discounts, and early access to new products.
+                        </CardDescription>
+                        <Button asChild size="lg" variant="secondary">
+                            <Link href="/membership">Learn More</Link>
+                        </Button>
+                    </CardContent>
+                </div>
+                 <div className="hidden md:block">
+                    <Image src="https://picsum.photos/seed/banner/600/400" alt="Pharmacist holding a box of medicine" width={600} height={400} className="object-cover h-full w-full rounded-r-lg" data-ai-hint="pharmacist medicine" />
+                 </div>
+            </div>
+          </Card>
       </section>
 
       <section id="featured-products" className="container mx-auto px-4">

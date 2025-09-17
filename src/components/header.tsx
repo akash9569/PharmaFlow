@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/#featured-products", label: "Products" },
   { href: "/dosage-tool", label: "Dosage Tool" },
+  { href: "/membership", label: "Membership" },
   { href: "/orders", label: "My Orders" },
   { href: "/contact", label: "Contact Us"},
 ];

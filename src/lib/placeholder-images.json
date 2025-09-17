@@ -59,6 +59,12 @@
       "description": "A friendly pharmacist smiling.",
       "imageUrl": "https://picsum.photos/seed/login-hero/800/600",
       "imageHint": "friendly pharmacist"
+    },
+    {
+      "id": "membership-card",
+      "description": "A stylish membership card for a loyalty program.",
+      "imageUrl": "https://picsum.photos/seed/membership/800/500",
+      "imageHint": "loyalty card"
     }
   ]
 }
