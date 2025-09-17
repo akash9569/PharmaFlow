@@ -9,8 +9,9 @@
  */
 
 import {ai} from '@/ai/genkit';
-import {generate} from 'genkit';
+import {generateStream} from 'genkit';
 import {z} from 'genkit';
+import {Message, Role, content, role} from 'genkit/model';
 
 const ChatInputSchema = z.object({
   message: z.string().describe("The user's message to the chatbot."),
@@ -26,31 +27,38 @@ const ChatInputSchema = z.object({
 });
 export type ChatInput = z.infer<typeof ChatInputSchema>;
 
-const ChatOutputSchema = z.object({
-  response: z
-    .string()
-    .describe("The chatbot's response to the user's message."),
-});
-export type ChatOutput = z.infer<typeof ChatOutputSchema>;
+export type ChatOutput = AsyncGenerator<string>;
 
 export async function chat(input: ChatInput): Promise<ChatOutput> {
   return chatFlow(input);
+}
+
+function toGenkitMessages(history: ChatInput['history']): Message[] {
+  const messages: Message[] = [];
+  if (!history) {
+    return messages;
+  }
+  for (const turn of history) {
+    const r = role(turn.role as Role);
+    messages.push({
+      role: r,
+      content: [content(turn.content)],
+    });
+  }
+  return messages;
 }
 
 const chatFlow = ai.defineFlow(
   {
     name: 'chatFlow',
     inputSchema: ChatInputSchema,
-    outputSchema: ChatOutputSchema,
+    outputSchema: z.string(),
   },
   async input => {
-    const history = (input.history || []).map(m => ({
-      role: m.role,
-      content: [{text: m.content}],
-    }));
+    const history = toGenkitMessages(input.history);
 
-    const llmResponse = await generate({
-      model: ai.model,
+    const {stream} = await generateStream({
+      model: 'googleai/gemini-2.5-flash',
       history,
       prompt: `You are a friendly and knowledgeable pharmacy assistant chatbot named PharmaBot. Your goal is to provide helpful and accurate information about medications and general health topics.
 
@@ -63,8 +71,16 @@ New user message: ${input.message}
 Your response should be helpful, clear, and empathetic.`,
     });
 
-    return {
-      response: llmResponse.text,
-    };
+    const reader = stream().getReader();
+    const decoder = new TextDecoder();
+    return (async function* () {
+      while (true) {
+        const {done, value} = await reader.read();
+        if (done) {
+          break;
+        }
+        yield decoder.decode(value.bytes, {stream: true});
+      }
+    })();
   }
 );
