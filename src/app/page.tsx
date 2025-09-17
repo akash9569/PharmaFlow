@@ -8,6 +8,8 @@ import { ProductCard } from '@/components/product-card';
 import { placeholderImages } from '@/lib/placeholder-images.json';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { CategoryShowcase } from '@/components/category-showcase';
+import { ClientReviews } from '@/components/client-reviews';
+import { Statistics } from '@/components/statistics';
 
 export default function Home() {
   const heroImage = placeholderImages.find(p => p.id === 'hero-background');
@@ -96,6 +98,8 @@ export default function Home() {
       </section>
 
       <CategoryShowcase />
+      <ClientReviews />
+      <Statistics />
     </div>
   );
 }

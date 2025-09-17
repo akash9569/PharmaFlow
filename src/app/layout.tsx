@@ -7,8 +7,6 @@ import { CartProvider } from '@/context/cart-context';
 import { AuthProvider } from '@/context/auth-context';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
-import { Statistics } from '@/components/statistics';
-import { ClientReviews } from '@/components/client-reviews';
 import { Chatbot } from '@/components/chatbot';
 
 export const metadata: Metadata = {
@@ -34,8 +32,6 @@ export default function RootLayout({
             <div className="flex flex-col min-h-screen">
               <Header />
               <main className="flex-grow">{children}</main>
-              <ClientReviews />
-              <Statistics />
               <Footer />
             </div>
             <Chatbot />
