@@ -9,14 +9,20 @@
  */
 
 import {ai} from '@/ai/genkit';
+import {generate} from 'genkit';
 import {z} from 'genkit';
 
 const ChatInputSchema = z.object({
   message: z.string().describe("The user's message to the chatbot."),
-  history: z.array(z.object({
-    role: z.enum(['user', 'model']),
-    content: z.string(),
-  })).optional().describe('The chat history.'),
+  history: z
+    .array(
+      z.object({
+        role: z.enum(['user', 'model']),
+        content: z.string(),
+      })
+    )
+    .optional()
+    .describe('The chat history.'),
 });
 export type ChatInput = z.infer<typeof ChatInputSchema>;
 
@@ -31,33 +37,6 @@ export async function chat(input: ChatInput): Promise<ChatOutput> {
   return chatFlow(input);
 }
 
-const prompt = ai.definePrompt({
-  name: 'chatbotPrompt',
-  input: {schema: ChatInputSchema},
-  output: {schema: ChatOutputSchema},
-  prompt: `You are a friendly and knowledgeable pharmacy assistant chatbot named PharmaBot. Your goal is to provide helpful and accurate information about medications and general health topics.
-
-You are not a substitute for a real healthcare professional. Always include the following disclaimer in your responses if you provide any health or medication related information: "Please remember, I'm an AI assistant and not a medical professional. Consult with a doctor or pharmacist for personalized medical advice."
-
-Converse with the user based on the provided history and the new message.
-
-{{#if history}}
-Chat History:
-{{#each history}}
-{{#if (eq this.role 'user')}}
-User: {{{this.content}}}
-{{/if}}
-{{#if (eq this.role 'model')}}
-PharmaBot: {{{this.content}}}
-{{/if}}
-{{/each}}
-{{/if}}
-
-New user message: {{{message}}}
-
-Your response should be helpful, clear, and empathetic.`,
-});
-
 const chatFlow = ai.defineFlow(
   {
     name: 'chatFlow',
@@ -65,7 +44,27 @@ const chatFlow = ai.defineFlow(
     outputSchema: ChatOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    const history = (input.history || []).map(m => ({
+      role: m.role,
+      content: [{text: m.content}],
+    }));
+
+    const llmResponse = await generate({
+      model: ai.model,
+      history,
+      prompt: `You are a friendly and knowledgeable pharmacy assistant chatbot named PharmaBot. Your goal is to provide helpful and accurate information about medications and general health topics.
+
+You are not a substitute for a real healthcare professional. Always include the following disclaimer in your responses if you provide any health or medication related information: "Please remember, I'm an AI assistant and not a medical professional. Consult with a doctor or pharmacist for personalized medical advice."
+
+Converse with the user based on the provided history and the new message.
+
+New user message: ${input.message}
+
+Your response should be helpful, clear, and empathetic.`,
+    });
+
+    return {
+      response: llmResponse.text,
+    };
   }
 );
