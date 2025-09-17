@@ -51,9 +51,9 @@ export default function DosageToolPage() {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8">
           <Sparkles className="mx-auto h-12 w-12 text-primary" />
-          <h1 className="text-4xl font-headline font-bold mt-4">AI Dosage Recommendation</h1>
+          <h1 className="text-4xl font-headline font-bold mt-4">AI Dosage Helper</h1>
           <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
-            Describe your symptoms, and our AI assistant will suggest a suitable product and dosage. This tool is for informational purposes only.
+            Tell us how you're feeling, and our AI will suggest a product and dosage. Use this for information only.
           </p>
         </div>
 
@@ -69,7 +69,7 @@ export default function DosageToolPage() {
                       <FormLabel className="text-lg">Your Symptoms</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="e.g., 'I have a headache, a runny nose, and I've been coughing for two days.'"
+                          placeholder="e.g., 'I have a headache and a runny nose.'"
                           className="min-h-[120px] text-base"
                           {...field}
                         />
@@ -82,12 +82,12 @@ export default function DosageToolPage() {
                   {isLoading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Getting Recommendation...
+                      Getting Suggestion...
                     </>
                   ) : (
                     <>
                       <Bot className="mr-2 h-5 w-5" />
-                      Get AI Recommendation
+                      Get AI Suggestion
                     </>
                   )}
                 </Button>
@@ -109,21 +109,21 @@ export default function DosageToolPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <Sparkles className="text-primary" />
-                Your AI Recommendation
+                AI Suggestion
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h3 className="font-semibold text-lg">Recommended Product:</h3>
+                <h3 className="font-semibold text-lg">Suggested Product:</h3>
                 <p className="text-muted-foreground">{recommendation.productRecommendation}</p>
               </div>
               <div>
-                <h3 className="font-semibold text-lg">Dosage Guideline:</h3>
+                <h3 className="font-semibold text-lg">Suggested Dosage:</h3>
                 <p className="text-muted-foreground">{recommendation.dosageRecommendation}</p>
               </div>
               <Alert>
                 <AlertCircle className="h-4 w-4" />
-                <AlertTitle>Disclaimer</AlertTitle>
+                <AlertTitle>Important</AlertTitle>
                 <AlertDescription>{recommendation.disclaimer}</AlertDescription>
               </Alert>
             </CardContent>

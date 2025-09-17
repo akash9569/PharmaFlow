@@ -26,7 +26,7 @@ const DosageRecommendationOutputSchema = z.object({
     .string()
     .describe(
       'A disclaimer that the dosage recommendation is not a substitute for professional medical advice.'
-    ).default('This dosage recommendation is not a substitute for professional medical advice. Consult with a healthcare provider for personalized guidance.'),
+    ).default('This is an AI suggestion, not medical advice. Please talk to a doctor or pharmacist for professional help.'),
 });
 export type DosageRecommendationOutput = z.infer<typeof DosageRecommendationOutputSchema>;
 
