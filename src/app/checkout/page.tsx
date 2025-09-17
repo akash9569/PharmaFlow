@@ -66,7 +66,7 @@ export default function CheckoutPage() {
             </div>
           </CardContent>
           <CardFooter>
-             <Button size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" onClick={handlePlaceOrder}>
+             <Button size="lg" className="w-full" onClick={handlePlaceOrder}>
                 Place Order
               </Button>
           </CardFooter>
@@ -80,7 +80,7 @@ export default function CheckoutPage() {
             {cartItems.map(item => (
               <div key={item.product.id} className="flex justify-between items-center">
                 <div className="flex items-center gap-4">
-                  <div className="relative h-16 w-16 rounded-md overflow-hidden">
+                  <div className="relative h-16 w-16 rounded-md overflow-hidden bg-secondary">
                     <Image src={item.product.imageUrl} alt={item.product.name} fill className="object-cover" />
                   </div>
                   <div>

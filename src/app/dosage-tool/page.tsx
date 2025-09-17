@@ -105,7 +105,7 @@ export default function DosageToolPage() {
         )}
 
         {recommendation && (
-          <Card className="mt-8 animate-fade-in">
+          <Card className="mt-8 animate-fade-in opacity-0 [--animation-delay:200ms]">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <Sparkles className="text-primary" />
@@ -114,12 +114,12 @@ export default function DosageToolPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h3 className="font-semibold">Recommended Product:</h3>
-                <p>{recommendation.productRecommendation}</p>
+                <h3 className="font-semibold text-lg">Recommended Product:</h3>
+                <p className="text-muted-foreground">{recommendation.productRecommendation}</p>
               </div>
               <div>
-                <h3 className="font-semibold">Dosage Guideline:</h3>
-                <p>{recommendation.dosageRecommendation}</p>
+                <h3 className="font-semibold text-lg">Dosage Guideline:</h3>
+                <p className="text-muted-foreground">{recommendation.dosageRecommendation}</p>
               </div>
               <Alert>
                 <AlertCircle className="h-4 w-4" />

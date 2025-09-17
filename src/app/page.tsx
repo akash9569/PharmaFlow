@@ -25,6 +25,7 @@ export default function Home() {
             data-ai-hint={heroImage.imageHint}
             fill
             className="object-cover brightness-50"
+            priority
           />
         )}
         <div className="relative z-10 p-4 space-y-4">
@@ -35,7 +36,7 @@ export default function Home() {
             Discover a seamless pharmacy experience with PharmaFlow. Quality medications, expert advice, and fast delivery right to your doorstep.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+            <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
               <Link href="/dosage-tool">
                 <Stethoscope className="mr-2" />
                 AI Dosage Guide
@@ -63,14 +64,14 @@ export default function Home() {
       </section>
 
        <section className="container mx-auto px-4">
-          <Card className="bg-accent text-accent-foreground border-none">
+          <Card className="bg-primary text-primary-foreground border-none">
             <div className="grid md:grid-cols-2 items-center">
                 <div className="p-8 md:p-12">
                     <CardHeader className="p-0 mb-4">
                         <CardTitle className="text-3xl font-headline flex items-center gap-2"><Award /> Become a PharmaFlow+ Member</CardTitle>
                     </CardHeader>
                     <CardContent className="p-0">
-                        <CardDescription className="text-accent-foreground/90 text-base mb-6">
+                        <CardDescription className="text-primary-foreground/90 text-base mb-6">
                             Join our loyalty program to unlock exclusive perks like free shipping, special discounts, and early access to new products.
                         </CardDescription>
                         <Button asChild size="lg" variant="secondary">
@@ -79,7 +80,7 @@ export default function Home() {
                     </CardContent>
                 </div>
                  <div className="hidden md:block">
-                    <Image src="https://picsum.photos/seed/medicines/600/400" alt="Assortment of different medicines and pills" width={600} height={400} className="object-cover h-full w-full rounded-r-lg" data-ai-hint="medicines pills" />
+                    <Image src="https://picsum.photos/seed/pills/600/400" alt="Assortment of different medicines and pills" width={600} height={400} className="object-cover h-full w-full rounded-r-lg" data-ai-hint="medicines pills" />
                  </div>
             </div>
           </Card>

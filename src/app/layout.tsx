@@ -8,6 +8,10 @@ import { AuthProvider } from '@/context/auth-context';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Chatbot } from '@/components/chatbot';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+
 
 export const metadata: Metadata = {
   title: 'PharmaFlow',
@@ -24,9 +28,9 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
       </head>
-      <body className={cn('font-body antialiased h-full bg-background')}>
+      <body className={cn('font-body antialiased h-full bg-background', inter.className)}>
         <AuthProvider>
           <CartProvider>
             <div className="flex flex-col min-h-screen">
