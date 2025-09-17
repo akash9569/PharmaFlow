@@ -49,8 +49,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(userCredential.user, { displayName: fullName });
-      // Manually set user state to trigger UI update
-      setUser({ ...userCredential.user, displayName: fullName });
+      // Reload the user to get the updated profile information
+      await userCredential.user.reload();
+      // Set the user from the reloaded user object
+      setUser(auth.currentUser);
       toast({ title: "Account created successfully!", description: "You are now logged in." });
       router.push('/');
     } catch (error: any) {
