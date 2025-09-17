@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/#featured-products", label: "Products" },
   { href: "/dosage-tool", label: "Dosage Tool" },
   { href: "/orders", label: "My Orders" },
+  { href: "/contact", label: "Contact Us"},
 ];
 
 export function Header() {
