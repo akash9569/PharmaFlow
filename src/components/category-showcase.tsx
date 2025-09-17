@@ -30,9 +30,9 @@ export function CategoryShowcase() {
                     {categories.map((category) => {
                         const Icon = categoryIcons[category] || categoryIcons.default;
                         return (
-                            <Link href={`/specialized-store?category=${category}`} key={category}>
-                                <Card className="text-center p-4 hover:shadow-lg transition-shadow hover:bg-card">
-                                    <CardContent className="p-2 flex flex-col items-center justify-center gap-2">
+                            <Link href={`/specialized-store?category=${category}`} key={category} className="flex">
+                                <Card className="text-center p-4 hover:shadow-lg transition-shadow hover:bg-card w-full flex flex-col">
+                                    <CardContent className="p-2 flex flex-col items-center justify-center gap-2 flex-grow">
                                         <Icon className="h-10 w-10 text-primary" />
                                         <h3 className="font-semibold text-sm md:text-base">{category}</h3>
                                     </CardContent>
