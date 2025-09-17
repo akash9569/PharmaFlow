@@ -1,14 +1,11 @@
 import Link from "next/link";
 import { Pill, Facebook, Twitter, Instagram } from "lucide-react";
 import { products } from "@/lib/products";
-import { CategoryShowcase } from "./category-showcase";
 
 export function Footer() {
   const categories = [...new Set(products.map((p) => p.category))];
 
   return (
-    <>
-    <CategoryShowcase />
     <footer className="bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -50,6 +47,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-    </>
   );
 }

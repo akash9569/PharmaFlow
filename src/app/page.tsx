@@ -7,6 +7,7 @@ import { products } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
 import { placeholderImages } from '@/lib/placeholder-images.json';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { CategoryShowcase } from '@/components/category-showcase';
 
 export default function Home() {
   const heroImage = placeholderImages.find(p => p.id === 'hero-background');
@@ -93,6 +94,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <CategoryShowcase />
     </div>
   );
 }
