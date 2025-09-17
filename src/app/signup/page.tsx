@@ -18,7 +18,7 @@ export default function SignupPage() {
                         Create an account to get started.
                     </p>
                 </div>
-                <div className="grid gap-4">
+                <form className="grid gap-4">
                     <div className="grid gap-2">
                         <Label htmlFor="full-name">Full Name</Label>
                         <Input id="full-name" placeholder="John Doe" required />
@@ -42,7 +42,7 @@ export default function SignupPage() {
                     <Button variant="outline" className="w-full">
                         Sign up with Google
                     </Button>
-                </div>
+                </form>
                 <div className="mt-4 text-center text-sm">
                     Already have an account?{" "}
                     <Link href="/login" className="underline">
