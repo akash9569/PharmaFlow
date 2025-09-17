@@ -1,3 +1,4 @@
+
 {
   "placeholderImages": [
     {
@@ -8,15 +9,15 @@
     },
     {
       "id": "prod_001",
-      "description": "Box of Ibuprofen tablets.",
-      "imageUrl": "https://picsum.photos/seed/painkiller/400/400",
-      "imageHint": "ibuprofen box"
+      "description": "Box of Rapid Pain Relief tablets.",
+      "imageUrl": "https://picsum.photos/seed/new-painkiller/400/400",
+      "imageHint": "painkiller box"
     },
     {
       "id": "prod_002",
-      "description": "Bottle of Vitamin C tablets.",
-      "imageUrl": "https://picsum.photos/seed/vitamins/400/400",
-      "imageHint": "vitamin c bottle"
+      "description": "Bottle of Immunity Booster C+ tablets.",
+      "imageUrl": "https://picsum.photos/seed/new-vitamins/400/400",
+      "imageHint": "vitamin bottle"
     },
     {
       "id": "prod_003",

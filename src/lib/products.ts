@@ -1,3 +1,4 @@
+
 import type { Product } from './types';
 import { placeholderImages } from './placeholder-images.json';
 
@@ -6,9 +7,9 @@ const getImageUrl = (id: string) => placeholderImages.find(p => p.id === id)?.im
 export const products: Product[] = [
   {
     id: 'prod_001',
-    name: 'Ibuprofen 200mg',
+    name: 'Rapid Pain Relief',
     description: 'Provides effective relief from pain, inflammation, and fever. Ideal for headaches, dental pain, and menstrual cramps.',
-    price: 5.99,
+    price: 7.50,
     imageUrl: getImageUrl('prod_001'),
     category: 'Pain Relief',
     dosage: 'Take 1-2 tablets every 4-6 hours as needed. Do not exceed 6 tablets in 24 hours.',
@@ -16,9 +17,9 @@ export const products: Product[] = [
   },
   {
     id: 'prod_002',
-    name: 'Vitamin C 1000mg',
+    name: 'Immunity Booster C+',
     description: 'A high-potency Vitamin C supplement to support immune system function and provide antioxidant protection.',
-    price: 12.49,
+    price: 15.00,
     imageUrl: getImageUrl('prod_002'),
     category: 'Vitamins & Supplements',
     dosage: 'Take 1 tablet daily with a meal.',
