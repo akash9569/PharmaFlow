@@ -10,7 +10,7 @@ import { useState } from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/#featured-products", label: "Products" },
+  { href: "/specialized-store", label: "Specialized Store" },
   { href: "/dosage-tool", label: "Dosage Tool" },
   { href: "/orders", label: "My Orders" },
   { href: "/contact", label: "Contact Us"},

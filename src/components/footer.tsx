@@ -1,8 +1,14 @@
 import Link from "next/link";
 import { Pill, Facebook, Twitter, Instagram } from "lucide-react";
+import { products } from "@/lib/products";
+import { CategoryShowcase } from "./category-showcase";
 
 export function Footer() {
+  const categories = [...new Set(products.map((p) => p.category))];
+
   return (
+    <>
+    <CategoryShowcase />
     <footer className="bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -16,16 +22,15 @@ export function Footer() {
           <div>
             <h3 className="font-headline font-semibold mb-4">Shop</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="#" className="hover:text-primary">Pain Relief</Link></li>
-              <li><Link href="#" className="hover:text-primary">Vitamins & Supplements</Link></li>
-              <li><Link href="#" className="hover:text-primary">Cold & Flu</Link></li>
-              <li><Link href="#" className="hover:text-primary">Allergy</Link></li>
+              {categories.map((category) => (
+                 <li key={category}><Link href={`/specialized-store?category=${category}`} className="hover:text-primary">{category}</Link></li>
+              ))}
             </ul>
           </div>
           <div>
             <h3 className="font-headline font-semibold mb-4">Support</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="#" className="hover:text-primary">Contact Us</Link></li>
+              <li><Link href="/contact" className="hover:text-primary">Contact Us</Link></li>
               <li><Link href="#" className="hover:text-primary">FAQs</Link></li>
               <li><Link href="#" className="hover:text-primary">Shipping & Returns</Link></li>
               <li><Link href="#" className="hover:text-primary">Privacy Policy</Link></li>
@@ -45,5 +50,6 @@ export function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }
