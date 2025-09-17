@@ -1,4 +1,7 @@
 
+"use client";
+
+import * as React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
@@ -10,8 +13,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Button } from "./ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from "./ui/dialog";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
+import { useToast } from "@/hooks/use-toast";
 
-const reviews = [
+const initialReviews = [
   {
     id: "review-1",
     name: "Sarah L.",
@@ -49,7 +61,45 @@ const reviews = [
   },
 ];
 
+const reviewFormSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  review: z.string().min(10, { message: "Review must be at least 10 characters." }),
+  rating: z.coerce.number().min(1).max(5),
+});
+
+type Review = typeof initialReviews[0];
+
 export function ClientReviews() {
+  const { toast } = useToast();
+  const [open, setOpen] = React.useState(false);
+  const [reviews, setReviews] = React.useState<Review[]>(initialReviews);
+
+  const form = useForm<z.infer<typeof reviewFormSchema>>({
+    resolver: zodResolver(reviewFormSchema),
+    defaultValues: {
+      name: "",
+      review: "",
+      rating: 5,
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof reviewFormSchema>) {
+    const newReview: Review = {
+      id: `review-${Date.now()}`,
+      name: values.name,
+      review: values.review,
+      rating: values.rating,
+      placeholderId: `avatar-${Math.ceil(Math.random() * 3)}`,
+    };
+    setReviews([newReview, ...reviews]);
+    toast({
+      title: "Review Submitted!",
+      description: "Thank you for your feedback.",
+    });
+    form.reset();
+    setOpen(false);
+  }
+
   return (
     <section className="bg-background py-12">
       <div className="container mx-auto px-4">
@@ -60,7 +110,7 @@ export function ClientReviews() {
         <Carousel
           opts={{
             align: "start",
-            loop: true,
+            loop: reviews.length > 2,
           }}
           className="w-full max-w-xs sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto"
         >
@@ -70,8 +120,8 @@ export function ClientReviews() {
               return (
                 <CarouselItem key={review.id} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-4 h-full">
-                    <Card className="h-full">
-                      <CardContent className="p-6 flex flex-col justify-between h-full">
+                    <Card className="h-full flex flex-col">
+                      <CardContent className="p-6 flex flex-col justify-between flex-grow">
                         <div className="flex items-center mb-4">
                           {image && (
                               <Avatar className="h-12 w-12 mr-4">
@@ -99,6 +149,79 @@ export function ClientReviews() {
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
+        <div className="text-center mt-8">
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+              <Button>Leave a Review</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Share Your Experience</DialogTitle>
+                <DialogDescription>
+                  We'd love to hear your feedback about our products and services.
+                </DialogDescription>
+              </DialogHeader>
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Your Name</FormLabel>
+                        <FormControl>
+                          <Input placeholder="John Doe" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                   <FormField
+                    control={form.control}
+                    name="review"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Your Review</FormLabel>
+                        <FormControl>
+                          <Textarea placeholder="Tell us what you think..." {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="rating"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Rating</FormLabel>
+                        <div className="flex items-center">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star
+                              key={star}
+                              className={cn(
+                                "h-6 w-6 cursor-pointer",
+                                field.value >= star ? "text-primary fill-primary" : "text-gray-300"
+                              )}
+                              onClick={() => field.onChange(star)}
+                            />
+                          ))}
+                        </div>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <DialogFooter>
+                    <DialogClose asChild>
+                      <Button type="button" variant="secondary">Cancel</Button>
+                    </DialogClose>
+                    <Button type="submit">Submit Review</Button>
+                  </DialogFooter>
+                </form>
+              </Form>
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
     </section>
   );
