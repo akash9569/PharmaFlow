@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { CartProvider } from '@/context/cart-context';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { Statistics } from '@/components/statistics';
 
 export const metadata: Metadata = {
   title: 'PharmaFlow',
@@ -28,6 +29,7 @@ export default function RootLayout({
           <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-grow">{children}</main>
+            <Statistics />
             <Footer />
           </div>
           <Toaster />
