@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as React from "react";
@@ -152,7 +151,7 @@ export function ClientReviews() {
         <div className="text-center mt-8">
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-              <Button>Leave a Review</Button>
+              <Button>Add Your Review</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
