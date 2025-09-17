@@ -11,6 +11,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
+import Image from 'next/image';
+import { placeholderImages } from '@/lib/placeholder-images.json';
 
 const formSchema = z.object({
   fullName: z.string().min(2, { message: 'Full name must be at least 2 characters.' }),
@@ -20,6 +22,7 @@ const formSchema = z.object({
 
 export default function ContactPage() {
   const { toast } = useToast();
+  const mapImage = placeholderImages.find(p => p.id === 'map-location');
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -107,7 +110,18 @@ export default function ContactPage() {
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="overflow-hidden">
+          {mapImage && (
+             <div className="relative aspect-video w-full">
+                <Image 
+                    src={mapImage.imageUrl}
+                    alt={mapImage.description}
+                    data-ai-hint={mapImage.imageHint}
+                    fill
+                    className="object-cover"
+                />
+             </div>
+          )}
           <CardHeader>
             <CardTitle>Get In Touch</CardTitle>
           </CardHeader>

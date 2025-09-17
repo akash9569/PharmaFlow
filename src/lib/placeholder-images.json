@@ -84,6 +84,12 @@
       "description": "Avatar of a person.",
       "imageUrl": "https://picsum.photos/seed/avatar3/100/100",
       "imageHint": "person smiling"
+    },
+    {
+      "id": "map-location",
+      "description": "A map showing the location of the pharmacy.",
+      "imageUrl": "https://picsum.photos/seed/map/600/400",
+      "imageHint": "map location"
     }
   ]
 }
