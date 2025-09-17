@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -11,7 +12,7 @@
 import {ai} from '@/ai/genkit';
 import {generateStream} from 'genkit';
 import {z} from 'genkit';
-import {Message, Role, content, role} from 'genkit/model';
+import {Message, Role} from 'genkit/model';
 
 const ChatInputSchema = z.object({
   message: z.string().describe("The user's message to the chatbot."),
@@ -39,10 +40,9 @@ function toGenkitMessages(history: ChatInput['history']): Message[] {
     return messages;
   }
   for (const turn of history) {
-    const r = role(turn.role as Role);
     messages.push({
-      role: r,
-      content: [content(turn.content)],
+      role: turn.role as Role,
+      content: [{text: turn.content}],
     });
   }
   return messages;
