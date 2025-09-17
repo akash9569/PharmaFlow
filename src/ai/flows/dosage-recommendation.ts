@@ -26,7 +26,7 @@ const DosageRecommendationOutputSchema = z.object({
     .string()
     .describe(
       'A disclaimer that the dosage recommendation is not a substitute for professional medical advice.'
-    ).default('This is an AI suggestion, not medical advice. Please talk to a doctor or pharmacist for professional help.'),
+    ).default("This is an AI suggestion, not medical advice. Please talk to a doctor or pharmacist for professional help."),
 });
 export type DosageRecommendationOutput = z.infer<typeof DosageRecommendationOutputSchema>;
 
@@ -38,6 +38,7 @@ const prompt = ai.definePrompt({
   name: 'dosageRecommendationPrompt',
   input: {schema: DosageRecommendationInputSchema},
   output: {schema: DosageRecommendationOutputSchema},
+  model: 'googleai/gemini-2.5-flash',
   prompt: `You are a helpful AI assistant that provides dosage recommendations for pharmaceutical products.
 
 You will take in user symptoms and provide a product recommendation and dosage recommendation.
